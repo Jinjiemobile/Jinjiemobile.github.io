@@ -153,6 +153,23 @@
   .display .scram { white-space: pre; }
   .display .line2 { display: block; padding-left: clamp(0px, 7vw, 6rem); }
   .display .accent-mark { color: var(--accent); }
+  .display .scram.scrambling { color: var(--clash-o-soft); }
+  .display .blk {
+    display: inline-block;
+    padding: 0 0.12em;
+    color: #0e1714;
+    line-height: 1;
+  }
+  .display .blk-g {
+    background: var(--clash-g);
+    transform: rotate(-0.8deg);
+    box-shadow: 0.12em 0.12em 0 var(--clash-o);
+  }
+  .display .blk-o {
+    background: var(--clash-o);
+    transform: rotate(0.6deg);
+    box-shadow: 0.12em 0.12em 0 var(--clash-g);
+  }
 
   .hero-bottom {
     margin-top: clamp(30px, 4vw, 48px);

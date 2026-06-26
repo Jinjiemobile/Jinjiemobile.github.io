@@ -32,6 +32,16 @@
     --warn: #b8732a;
     --grid: rgb(14 23 20 / 0.038);
     --shadow: 0 22px 60px rgb(14 23 20 / 0.10);
+    --clash-o: #ff5500;
+    --clash-o-soft: #d44a00;
+    --clash-g: #087f6d;
+    --clash-g-soft: #066156;
+    --border-hard: 2px solid var(--ink);
+    --shadow-hard: 4px 4px 0 var(--clash-g);
+    --shadow-lg-hard: 6px 6px 0 var(--clash-g);
+    --rotate-neg: -0.8deg;
+    --rotate-pos: 0.6deg;
+    --rotate-stamp: -2deg;
   }
   [data-theme="dark"] {
     --bg: #0c1210;
@@ -46,6 +56,13 @@
     --warn: #d99a52;
     --grid: rgb(234 243 238 / 0.04);
     --shadow: 0 22px 60px rgb(0 0 0 / 0.4);
+    --clash-o: #ff5500;
+    --clash-o-soft: #ff7a3d;
+    --clash-g: #49d6bd;
+    --clash-g-soft: #49d6bd;
+    --border-hard: 2px solid #fafaf7;
+    --shadow-hard: 4px 4px 0 var(--clash-g);
+    --shadow-lg-hard: 6px 6px 0 var(--clash-g);
   }
   .skip-link {
     position: absolute;

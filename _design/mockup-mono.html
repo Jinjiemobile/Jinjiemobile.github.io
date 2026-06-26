@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jinjie Mobile · Mono Mockup v3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f8f6;
+    --surface: #ffffff;
+    --ink: #0e1714;
+    --ink-soft: #5d6c66;
+    --ink-faint: #97a39e;
+    --line: #d7e1db;
+    --accent: #087f6d;
+    --accent-ink: #064f45;
+    --accent-soft: #d7f2eb;
+    --warn: #b8732a;
+    --grid: rgb(14 23 20 / 0.038);
+    --shadow: 0 22px 60px rgb(14 23 20 / 0.10);
+  }
+  [data-theme="dark"] {
+    --bg: #0c1210;
+    --surface: #121b18;
+    --ink: #eaf3ee;
+    --ink-soft: #94a59e;
+    --ink-faint: #5a6a64;
+    --line: #233029;
+    --accent: #49d6bd;
+    --accent-ink: #95f0dc;
+    --accent-soft: #173d36;
+    --warn: #d99a52;
+    --grid: rgb(234 243 238 / 0.04);
+    --shadow: 0 22px 60px rgb(0 0 0 / 0.4);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    font-feature-settings: "calt" 0, "liga" 0;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+  body::before {
+    content: "";
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image: linear-gradient(var(--grid) 1px, transparent 1px);
+    background-size: 100% 8px;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+
+  .wrap { position: relative; z-index: 1; width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+
+  /* ── nav ── */
+  .nav {
+    position: sticky; top: 0; z-index: 5;
+    display: flex; align-items: center; justify-content: space-between;
+    min-height: 64px; padding: 14px 0;
+    backdrop-filter: blur(14px);
+    background: color-mix(in srgb, var(--bg) 78%, transparent);
+    border-bottom: 1px solid transparent;
+    transition: border-color 200ms ease;
+  }
+  .nav.scrolled { border-color: var(--line); }
+  .prompt { font-size: 13px; font-weight: 500; letter-spacing: 0.02em; }
+  .prompt .gt { color: var(--accent); }
+  .cursor {
+    display: inline-block; width: 8px; height: 15px; margin-left: 2px;
+    background: var(--accent); transform: translateY(2px);
+    animation: blink 1.05s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+  .nav-menu { display: flex; gap: 4px; font-size: 12.5px; letter-spacing: 0.04em; }
+  .nav-menu a {
+    padding: 7px 12px; color: var(--ink-soft);
+    border: 1px solid transparent; border-radius: 4px;
+    transition: color 160ms ease, border-color 160ms ease, background 160ms ease;
+  }
+  .nav-menu a:hover { color: var(--accent-ink); border-color: var(--line); background: var(--surface); }
+
+  /* ── hero ── */
+  .hero { padding: clamp(48px, 8vw, 88px) 0 clamp(40px, 6vw, 64px); position: relative; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-bottom: clamp(18px, 2.5vw, 26px);
+    font-size: 12px; letter-spacing: 0.14em; color: var(--accent-ink); text-transform: uppercase;
+  }
+  .eyebrow .dot {
+    width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-soft);
+  }
+  .display {
+    font-size: clamp(3rem, 11vw, 9rem);
+    line-height: 0.92; letter-spacing: -0.045em; font-weight: 600;
+    margin: 0; text-transform: uppercase; word-break: break-word;
+  }
+  .display .scram { white-space: pre; }
+  .display .line2 { display: block; padding-left: clamp(0px, 7vw, 6rem); }
+  .display .accent-mark { color: var(--accent); }
+
+  .hero-bottom {
+    margin-top: clamp(30px, 4vw, 48px);
+    display: grid;
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    gap: clamp(24px, 4vw, 48px);
+    align-items: end;
+  }
+  .hero-meta { display: grid; gap: 20px; align-content: end; }
+  .hero-lede {
+    margin: 0; font-size: clamp(0.98rem, 1.4vw, 1.12rem);
+    color: var(--ink-soft); line-height: 1.7; font-weight: 400; max-width: 42ch;
+  }
+  .hero-lede .kw { color: var(--ink); font-weight: 500; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 13px 20px; font-family: inherit; font-size: 13px; font-weight: 500; letter-spacing: 0.03em;
+    border-radius: 6px; border: 1px solid transparent; cursor: pointer;
+    transition: transform 160ms ease, background 160ms ease, border-color 160ms ease, color 160ms ease;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn .bracket { color: var(--ink-faint); transition: color 160ms ease; }
+  .btn-primary { background: var(--accent); color: #f7fffc; }
+  .btn-primary:hover { background: var(--accent-ink); }
+  .btn-primary .bracket { color: rgb(255 255 255 / 0.55); }
+  .btn-ghost { border-color: var(--line); color: var(--ink); background: var(--surface); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent-ink); }
+  .btn-ghost:hover .bracket { color: var(--accent); }
+
+  /* ── frame (工程素材窗口) ── */
+  .frame {
+    margin: 0; border: 1px solid var(--line); border-radius: 8px;
+    background: var(--surface); overflow: hidden; box-shadow: var(--shadow);
+  }
+  .frame-bar {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 9px 13px; border-bottom: 1px solid var(--line);
+    font-size: 11px; color: var(--ink-soft); letter-spacing: 0.03em;
+    background: color-mix(in srgb, var(--bg) 55%, var(--surface));
+  }
+  .frame-bar .path { display: inline-flex; align-items: center; gap: 7px; min-width: 0; }
+  .frame-bar .path .ic { color: var(--accent); }
+  .frame-bar .path .dir { color: var(--ink-faint); }
+  .frame-bar .info { color: var(--ink-faint); white-space: nowrap; }
+  .frame img { width: 100%; height: 100%; object-fit: cover; }
+  .frame.hero-frame img { aspect-ratio: 4 / 3; }
+
+  /* ── section ── */
+  .section { padding: clamp(56px, 9vw, 108px) 0; border-top: 1px solid var(--line); }
+  .section:first-of-type { border-top: none; }
+  .sec-head { margin-bottom: clamp(28px, 4vw, 44px); }
+  .sec-title {
+    font-size: clamp(1.6rem, 3.8vw, 3rem); line-height: 1; letter-spacing: -0.035em;
+    font-weight: 600; margin: 0; text-transform: uppercase;
+  }
+  .sec-title .mute { color: var(--ink-faint); }
+  .sec-note { margin: clamp(20px, 3vw, 28px) 0 0; font-size: 13px; color: var(--ink-faint); max-width: 60ch; line-height: 1.7; }
+
+  /* bento */
+  .bento { display: grid; grid-template-columns: 1.5fr 1fr; gap: 16px; }
+  .bento .frame img { aspect-ratio: 16 / 11; }
+  .bento .frame.tall img { aspect-ratio: 3 / 4; }
+
+  /* log */
+  .log-wrap { display: grid; grid-template-columns: 1fr; gap: clamp(24px, 4vw, 40px); }
+  .log { border-top: 1px solid var(--line); }
+  .log-row {
+    display: grid; grid-template-columns: 92px 1fr; gap: 20px; align-items: baseline;
+    padding: clamp(20px, 3vw, 28px) 0; border-bottom: 1px solid var(--line);
+  }
+  .log-tag { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .log-tag.now { color: var(--accent); }
+  .log-tag.next { color: var(--warn); }
+  .log-tag.later { color: var(--ink-faint); }
+  .log-body { margin: 0; font-size: clamp(1.02rem, 1.9vw, 1.42rem); line-height: 1.35; letter-spacing: -0.02em; color: var(--ink); font-weight: 500; }
+  .log-body .comment { color: var(--ink-faint); font-weight: 400; font-size: 0.78em; display: block; margin-top: 6px; }
+  .pulse { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-left: 8px; transform: translateY(-1px); animation: pulse 1.8s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+  .desk-frame img { aspect-ratio: 16 / 8; }
+
+  /* ── footer ── */
+  .foot {
+    border-top: 1px solid var(--line); padding: 28px 0 44px;
+    display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+    font-size: 12px; color: var(--ink-faint); letter-spacing: 0.03em;
+  }
+  .foot a:hover { color: var(--accent-ink); }
+
+  .nav-right { display: flex; align-items: center; gap: 10px; }
+  .theme-btn {
+    font-family: inherit; font-size: 12px; letter-spacing: 0.03em;
+    padding: 7px 12px; border: 1px solid var(--line); border-radius: 4px;
+    background: var(--surface); color: var(--ink-soft); cursor: pointer;
+    transition: color 160ms ease, border-color 160ms ease;
+  }
+  .theme-btn:hover { color: var(--accent-ink); border-color: var(--accent); }
+
+  @media (max-width: 860px) {
+    .hero-bottom { grid-template-columns: 1fr; align-items: start; }
+    .bento { grid-template-columns: 1fr; }
+    .bento .frame.tall img { aspect-ratio: 16 / 11; }
+  }
+  @media (max-width: 720px) {
+    .nav-menu { display: none; }
+    .display .line2 { padding-left: 0; }
+    .log-row { grid-template-columns: 1fr; gap: 8px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav wrap" id="nav">
+  <a class="prompt" href="#top"><span class="gt">&gt;</span> jinjie.mobile<span class="cursor"></span></a>
+  <div class="nav-right">
+    <div class="nav-menu">
+      <a href="#focus">focus</a>
+      <a href="#log">log</a>
+      <a href="#contact">contact</a>
+    </div>
+    <button class="theme-btn" id="toggle" aria-label="Toggle color theme">[ light ]</button>
+  </div>
+</nav>
+
+<header class="hero wrap" id="top">
+  <p class="eyebrow"><span class="dot"></span> new mobile studio · 2026</p>
+
+  <h1 class="display">
+    <span class="scram" data-scramble data-text="BUILDING">BUILDING</span>
+    <span class="line2"><span class="scram" data-scramble data-text="FOCUSED APPS">FOCUSED APPS</span><span class="accent-mark">.</span></span>
+  </h1>
+
+  <div class="hero-bottom">
+    <div class="hero-meta">
+      <p class="hero-lede">
+        <span class="kw">//</span> a small studio shipping <span class="kw">mobile tools</span> with thoughtful interfaces and real utility. first products are in progress.
+      </p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#log"><span class="bracket">[</span> see what's next <span class="bracket">]</span></a>
+        <a class="btn btn-ghost" href="https://github.com/Jinjiemobile" target="_blank" rel="noreferrer"><span class="bracket">[</span> github <span class="bracket">]</span></a>
+      </div>
+    </div>
+
+    <figure class="frame hero-frame">
+      <figcaption class="frame-bar">
+        <span class="path"><span class="ic">▸</span><span class="dir">~/assets/</span>hero-phone.jpg</span>
+        <span class="info">4:3</span>
+      </figcaption>
+      <img src="../assets/hero-phone.jpg" alt="Close-up smartphone surface for Jinjie Mobile">
+    </figure>
+  </div>
+</header>
+
+<section class="section wrap" id="focus">
+  <div class="sec-head">
+    <h2 class="sec-title">where it's <span class="mute">made.</span></h2>
+  </div>
+  <div class="bento">
+    <figure class="frame">
+      <figcaption class="frame-bar">
+        <span class="path"><span class="ic">▸</span><span class="dir">~/assets/</span>focus-workspace.jpg</span>
+        <span class="info">16:11</span>
+      </figcaption>
+      <img src="../assets/focus-workspace.jpg" alt="Mobile design workspace">
+    </figure>
+    <figure class="frame tall">
+      <figcaption class="frame-bar">
+        <span class="path"><span class="ic">▸</span><span class="dir">~/assets/</span>feature-closeup.jpg</span>
+        <span class="info">3:4</span>
+      </figcaption>
+      <img src="../assets/feature-closeup.jpg" alt="Close-up mobile glass surface">
+    </figure>
+  </div>
+  <p class="sec-note">// small screens first. every idea starts with a narrow job and a reason to exist. prototypes land on real devices, not slide decks.</p>
+</section>
+
+<section class="section wrap" id="log">
+  <div class="sec-head">
+    <h2 class="sec-title">what's <span class="mute">cooking.</span></h2>
+  </div>
+
+  <div class="log-wrap">
+    <div class="log">
+      <div class="log-row">
+        <span class="log-tag now">NOW<span class="pulse"></span></span>
+        <p class="log-body">Researching small, focused mobile tools.<span class="comment">// narrowing down the first problem worth solving.</span></p>
+      </div>
+      <div class="log-row">
+        <span class="log-tag next">NEXT</span>
+        <p class="log-body">Building first release candidates.<span class="comment">// prototypes on real devices, no mockups.</span></p>
+      </div>
+      <div class="log-row">
+        <span class="log-tag later">LATER</span>
+        <p class="log-body">Publishing support and privacy pages.<span class="comment">// this page becomes the home for released apps.</span></p>
+      </div>
+    </div>
+
+    <figure class="frame desk-frame">
+      <figcaption class="frame-bar">
+        <span class="path"><span class="ic">▸</span><span class="dir">~/assets/</span>coming-soon-desk.jpg</span>
+        <span class="info">16:8</span>
+      </figcaption>
+      <img src="../assets/coming-soon-desk.jpg" alt="Pre-release mobile product planning desk">
+    </figure>
+  </div>
+</section>
+
+<footer class="foot wrap" id="contact">
+  <div>© 2026 jinjie.mobile · focused apps in progress</div>
+  <div>
+    <a href="https://github.com/Jinjiemobile" target="_blank" rel="noreferrer">github</a> &nbsp;//&nbsp;
+    <a href="mailto:hello@jinjiemobile.com">hello@jinjiemobile.com</a>
+  </div>
+</footer>
+
+<script>
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const GLYPHS = "!<>-_\\/[]{}=+*?#01ABCDEF≈∞▓░";
+  document.querySelectorAll("[data-scramble]").forEach((el) => {
+    const target = el.dataset.text;
+    if (reduce) { el.textContent = target; return; }
+    let frame = 0;
+    const lockEvery = 5;
+    const totalFrames = target.length * lockEvery + 8;
+    const run = () => {
+      let out = "";
+      for (let i = 0; i < target.length; i++) {
+        if (target[i] === " ") { out += " "; continue; }
+        out += i < frame / lockEvery ? target[i] : GLYPHS[(Math.random() * GLYPHS.length) | 0];
+      }
+      el.textContent = out;
+      frame++;
+      if (frame >= totalFrames) { el.textContent = target; return; }
+      setTimeout(run, 38);
+    };
+    setTimeout(run, 250);
+  });
+
+  const nav = document.getElementById("nav");
+  addEventListener("scroll", () => nav.classList.toggle("scrolled", scrollY > 8), { passive: true });
+
+  const root = document.documentElement;
+  const btn = document.getElementById("toggle");
+  btn.addEventListener("click", () => {
+    const next = root.dataset.theme === "dark" ? "light" : "dark";
+    root.dataset.theme = next;
+    btn.textContent = `[ ${next} ]`;
+  });
+</script>
+</body>
+</html>

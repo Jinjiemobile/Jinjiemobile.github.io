@@ -26,21 +26,14 @@
   const root = document.documentElement;
   const btn = document.getElementById("toggle");
 
-  // Follow OS color scheme live unless the user manually toggles.
-  let userOverrode = false;
-  const darkMq = window.matchMedia("(prefers-color-scheme: dark)");
+  // Dark is the default brand theme. Users can still toggle to light.
   const applyTheme = (mode) => {
     root.dataset.theme = mode;
     if (btn) btn.textContent = `[ ${mode} ]`;
   };
-  applyTheme(darkMq.matches ? "dark" : "light");
-  darkMq.addEventListener("change", (e) => {
-    if (userOverrode) return;
-    applyTheme(e.matches ? "dark" : "light");
-  });
+  applyTheme("dark");
 
   btn.addEventListener("click", () => {
-    userOverrode = true;
     const next = root.dataset.theme === "dark" ? "light" : "dark";
     applyTheme(next);
   });

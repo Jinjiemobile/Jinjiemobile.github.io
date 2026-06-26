@@ -1,5 +1,5 @@
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const GLYPHS = "!<>-_\\/[]{}=+*?#01ABCDEF≈∞▓░";
+  const GLYPHS = "!<>-_\\/[]{}=+*?#01ABCDEFxyz";
   document.querySelectorAll("[data-scramble]").forEach((el) => {
     const target = el.dataset.text;
     if (reduce) { el.textContent = target; return; }
@@ -26,16 +26,23 @@
   const root = document.documentElement;
   const btn = document.getElementById("toggle");
 
-  // Auto-detect system color scheme on load (manual toggle below still overrides).
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const initial = prefersDark ? "dark" : "light";
-  root.dataset.theme = initial;
-  btn.textContent = `[ ${initial} ]`;
+  // Follow OS color scheme live unless the user manually toggles.
+  let userOverrode = false;
+  const darkMq = window.matchMedia("(prefers-color-scheme: dark)");
+  const applyTheme = (mode) => {
+    root.dataset.theme = mode;
+    if (btn) btn.textContent = `[ ${mode} ]`;
+  };
+  applyTheme(darkMq.matches ? "dark" : "light");
+  darkMq.addEventListener("change", (e) => {
+    if (userOverrode) return;
+    applyTheme(e.matches ? "dark" : "light");
+  });
 
   btn.addEventListener("click", () => {
+    userOverrode = true;
     const next = root.dataset.theme === "dark" ? "light" : "dark";
-    root.dataset.theme = next;
-    btn.textContent = `[ ${next} ]`;
+    applyTheme(next);
   });
 
   const menuBtn = document.getElementById("menuBtn");
@@ -51,5 +58,20 @@
         navMenu.classList.remove("open");
         menuBtn.setAttribute("aria-expanded", "false");
       });
+    });
+    // 点击菜单外部收起
+    const closeMenu = () => {
+      navMenu.classList.remove("open");
+      menuBtn.setAttribute("aria-expanded", "false");
+    };
+    document.addEventListener("click", (e) => {
+      if (!navMenu.classList.contains("open")) return;
+      if (navMenu.contains(e.target) || menuBtn.contains(e.target)) return;
+      closeMenu();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape") return;
+      if (!navMenu.classList.contains("open")) return;
+      closeMenu();
     });
   }

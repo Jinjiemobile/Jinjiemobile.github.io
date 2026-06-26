@@ -47,6 +47,20 @@
     --grid: rgb(234 243 238 / 0.04);
     --shadow: 0 22px 60px rgb(0 0 0 / 0.4);
   }
+  .skip-link {
+    position: absolute;
+    left: 16px;
+    top: -48px;
+    z-index: 20;
+    padding: 10px 16px;
+    background: var(--accent);
+    color: #f7fffc;
+    border-radius: 6px;
+    font-size: 13px;
+    transition: top 160ms ease;
+  }
+  .skip-link:focus { top: 12px; }
+
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {

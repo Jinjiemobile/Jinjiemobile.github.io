@@ -25,6 +25,13 @@
 
   const root = document.documentElement;
   const btn = document.getElementById("toggle");
+
+  // Auto-detect system color scheme on load (manual toggle below still overrides).
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const initial = prefersDark ? "dark" : "light";
+  root.dataset.theme = initial;
+  btn.textContent = `[ ${initial} ]`;
+
   btn.addEventListener("click", () => {
     const next = root.dataset.theme === "dark" ? "light" : "dark";
     root.dataset.theme = next;

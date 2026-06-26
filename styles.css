@@ -220,9 +220,11 @@
 
   /* -- frame (asset window) -- */
   .frame {
-    margin: 0; border: 1px solid var(--line); border-radius: 8px;
-    background: var(--surface); overflow: hidden; box-shadow: var(--shadow);
+    margin: 0; border: 2px solid var(--ink); border-radius: 0;
+    background: var(--surface); overflow: hidden;
+    box-shadow: 6px 6px 0 var(--clash-g);
   }
+  [data-theme="dark"] .frame { border-color: #fafaf7; }
   .frame-bar {
     display: flex; align-items: center; justify-content: space-between; gap: 12px;
     padding: 9px 13px; border-bottom: 1px solid var(--line);
@@ -232,9 +234,26 @@
   .frame-bar .path { display: inline-flex; align-items: center; gap: 7px; min-width: 0; }
   .frame-bar .path .ic { color: var(--accent); }
   .frame-bar .path .dir { color: var(--ink-faint); }
-  .frame-bar .info { color: var(--ink-faint); white-space: nowrap; }
+  .frame-bar .info {
+    color: #0e1714; white-space: nowrap;
+    background: var(--clash-g);
+    padding: 2px 7px; font-weight: 600;
+  }
+  /* 右图(tall)的信息标用橙色呼应其阴影 */
+  .bento .frame.tall .frame-bar .info { background: var(--clash-o); }
   .frame img { width: 100%; height: 100%; object-fit: cover; }
   .frame.hero-frame img { aspect-ratio: 4 / 3; }
+  /* Hero frame 与 desk frame:绿阴影。Bento: 左图绿左倾,右图橙右倾 — 交替拼贴 */
+  .frame.hero-frame { box-shadow: 6px 6px 0 var(--clash-g); }
+  .bento .frame:not(.tall) {
+    box-shadow: 6px 6px 0 var(--clash-g);
+    transform: rotate(-0.5deg);
+  }
+  .bento .frame.tall {
+    box-shadow: 6px 6px 0 var(--clash-o);
+    transform: rotate(0.5deg);
+  }
+  .frame.desk-frame { box-shadow: 6px 6px 0 var(--clash-g); }
 
   /* -- section -- */
   .section { padding: clamp(56px, 9vw, 108px) 0; border-top: 1px solid var(--line); }

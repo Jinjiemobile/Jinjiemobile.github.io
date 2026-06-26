@@ -213,13 +213,39 @@
   }
   .theme-btn:hover { color: var(--accent-ink); border-color: var(--accent); }
 
+  .menu-btn {
+    display: none;
+    font-family: inherit; font-size: 12px; letter-spacing: 0.03em;
+    padding: 7px 12px; border: 1px solid var(--line); border-radius: 4px;
+    background: var(--surface); color: var(--ink-soft); cursor: pointer;
+    transition: color 160ms ease, border-color 160ms ease;
+  }
+  .menu-btn:hover { color: var(--accent-ink); border-color: var(--accent); }
+
   @media (max-width: 860px) {
     .hero-bottom { grid-template-columns: 1fr; align-items: start; }
     .bento { grid-template-columns: 1fr; }
     .bento .frame.tall img { aspect-ratio: 16 / 11; }
   }
   @media (max-width: 720px) {
-    .nav-menu { display: none; }
+    .menu-btn { display: inline-flex; }
+    .nav-menu {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 2px;
+      min-width: 160px;
+      padding: 8px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      display: none;
+    }
+    .nav-menu.open { display: flex; }
+    .nav-menu a { padding: 10px 12px; }
     .display .line2 { padding-left: 0; }
     .log-row { grid-template-columns: 1fr; gap: 8px; }
   }

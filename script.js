@@ -30,3 +30,19 @@
     root.dataset.theme = next;
     btn.textContent = `[ ${next} ]`;
   });
+
+  const menuBtn = document.getElementById("menuBtn");
+  const navMenu = document.querySelector(".nav-menu");
+  if (menuBtn && navMenu) {
+    menuBtn.addEventListener("click", () => {
+      const open = navMenu.classList.toggle("open");
+      menuBtn.setAttribute("aria-expanded", String(open));
+    });
+    // 点菜单项后收起
+    navMenu.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => {
+        navMenu.classList.remove("open");
+        menuBtn.setAttribute("aria-expanded", "false");
+      });
+    });
+  }

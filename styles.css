@@ -377,6 +377,10 @@
     .nav-menu.open { display: flex; }
     .nav-menu a { padding: 10px 12px; }
     .display .line2 { padding-left: 0; }
+    .display .blk { padding: 0 0.08em; }
+    .display .blk-g { transform: rotate(-0.5deg); }
+    .display .blk-o { transform: rotate(0.4deg); }
+    .eyebrow.stamp { transform: rotate(-1.5deg); }
     .log-row { grid-template-columns: 1fr; gap: 8px; }
   }
   @media (prefers-reduced-motion: reduce) {

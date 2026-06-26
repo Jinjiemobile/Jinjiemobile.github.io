@@ -1,127 +1,127 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Jinjie Mobile is building focused mobile apps with thoughtful interfaces and real utility.">
-    <meta name="theme-color" content="#f7fbf8">
-    <meta property="og:title" content="Jinjie Mobile">
-    <meta property="og:description" content="Focused mobile apps in development.">
-    <meta property="og:type" content="website">
-    <title>Jinjie Mobile</title>
-    <link rel="icon" href="assets/jinjie-mobile-icon.svg" type="image/svg+xml">
-    <link rel="icon" href="assets/jinjie-mobile-icon-32.png" sizes="32x32" type="image/png">
-    <link rel="apple-touch-icon" href="assets/jinjie-mobile-icon-180.png">
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <header class="site-header" data-reveal>
-      <a class="brand" href="#top" aria-label="Jinjie Mobile home">
-        <span class="brand-mark" aria-hidden="true">
-          <img src="assets/jinjie-mobile-icon.svg" alt="">
-        </span>
-        <span>Jinjie Mobile</span>
-      </a>
-      <nav class="nav-links" aria-label="Primary navigation">
-        <a href="#focus">Focus</a>
-        <a href="#apps">Apps</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Jinjie Mobile is building focused mobile apps with thoughtful interfaces and real utility.">
+  <meta name="theme-color" content="#f7fbf8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0c1210" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="Jinjie Mobile">
+  <meta property="og:description" content="Focused mobile apps in development.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/hero-phone.jpg">
+  <title>Jinjie Mobile</title>
+  <link rel="icon" href="assets/jinjie-mobile-icon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/jinjie-mobile-icon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/jinjie-mobile-icon-180.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-    <main id="top">
-      <section class="hero">
-        <div class="hero-copy" data-reveal>
-          <p class="section-label">New mobile studio</p>
-          <h1>Jinjie Mobile</h1>
-          <p class="hero-lede">Focused mobile apps in development.</p>
-          <p class="hero-subcopy">Small tools, thoughtful interfaces, real utility.</p>
-          <div class="hero-actions" aria-label="Primary actions">
-            <a class="button button-primary" href="#apps">See what's next</a>
-            <a class="button button-secondary" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
-          </div>
-        </div>
+<nav class="nav wrap" id="nav">
+  <a class="prompt" href="#top"><span class="gt">&gt;</span> jinjie.mobile<span class="cursor"></span></a>
+  <div class="nav-right">
+    <div class="nav-menu">
+      <a href="#focus">focus</a>
+      <a href="#log">log</a>
+      <a href="#contact">contact</a>
+    </div>
+    <button class="theme-btn" id="toggle" aria-label="Toggle color theme">[ light ]</button>
+  </div>
+</nav>
 
-        <div class="hero-visual" data-reveal>
-          <img src="assets/hero-phone.jpg" alt="Close-up smartphone surface for Jinjie Mobile">
-        </div>
-      </section>
+<header class="hero wrap" id="top">
+  <p class="eyebrow"><span class="dot"></span> new mobile studio · 2026</p>
 
-      <section class="intro-band" aria-label="Studio position" data-reveal>
-        <p>Jinjie Mobile is a new developer brand for practical mobile software. The first products are still being shaped, tested, and refined.</p>
-      </section>
+  <h1 class="display">
+    <span class="scram" data-scramble data-text="BUILDING">BUILDING</span>
+    <span class="line2"><span class="scram" data-scramble data-text="FOCUSED APPS">FOCUSED APPS</span><span class="accent-mark">.</span></span>
+  </h1>
 
-      <section class="focus-section" id="focus">
-        <div class="section-heading" data-reveal>
-          <h2>Built around calm utility.</h2>
-          <p>Early work is focused on mobile experiences that feel direct, dependable, and easy to return to.</p>
-        </div>
-
-        <div class="focus-grid">
-          <article class="focus-panel panel-large" data-reveal>
-            <div>
-              <h3>Mobile-first craft</h3>
-              <p>Interfaces are designed for small screens first, with clear flows and restrained visual weight.</p>
-            </div>
-            <img src="assets/focus-workspace.jpg" alt="Mobile design workspace for Jinjie Mobile">
-          </article>
-          <article class="focus-panel panel-accent" data-reveal>
-            <h3>Useful before flashy</h3>
-            <p>Every product idea starts with a narrow job and a reason to exist.</p>
-          </article>
-          <article class="focus-panel panel-image" data-reveal>
-            <img src="assets/feature-closeup.jpg" alt="Close-up mobile glass surface">
-          </article>
-        </div>
-      </section>
-
-      <section class="status-section">
-        <div class="status-copy" data-reveal>
-          <h2>Apps are coming soon.</h2>
-          <p>The public catalog is intentionally empty for now. This page will become the home for released apps, support links, and privacy information.</p>
-        </div>
-        <div class="status-list" data-reveal>
-          <div>
-            <strong>Now</strong>
-            <span>Researching small mobile tools</span>
-          </div>
-          <div>
-            <strong>Next</strong>
-            <span>Building first release candidates</span>
-          </div>
-          <div>
-            <strong>Later</strong>
-            <span>Publishing support and privacy pages</span>
-          </div>
-        </div>
-        <figure class="status-image" data-reveal>
-          <img src="assets/coming-soon-desk.jpg" alt="Pre-release mobile product planning desk">
-        </figure>
-      </section>
-
-      <section class="apps-section" id="apps">
-        <div class="apps-shell" data-reveal>
-          <div>
-            <p class="section-label">Future catalog</p>
-            <h2>A simple place for every release.</h2>
-          </div>
-          <p>When the first app ships, this section can hold product pages, store links, release notes, and support channels without changing the brand foundation.</p>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer" id="contact">
-      <div>
-        <strong>Jinjie Mobile</strong>
-        <p>Focused mobile apps in development.</p>
+  <div class="hero-bottom">
+    <div class="hero-meta">
+      <p class="hero-lede">
+        <span class="kw">//</span> a small studio shipping <span class="kw">mobile tools</span> with thoughtful interfaces and real utility. first products are in progress.
+      </p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#log"><span class="bracket">[</span> see what's next <span class="bracket">]</span></a>
+        <a class="btn btn-ghost" href="https://github.com/Jinjiemobile" target="_blank" rel="noreferrer"><span class="bracket">[</span> github <span class="bracket">]</span></a>
       </div>
-      <div class="footer-links" aria-label="Contact links">
-        <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
-        <a href="mailto:hello@jinjiemobile.com">Email</a>
-      </div>
-    </footer>
+    </div>
 
-    <script src="script.js"></script>
-  </body>
+    <figure class="frame hero-frame">
+      <figcaption class="frame-bar">
+        <span class="path"><span class="ic">▸</span><span class="dir">~/assets/</span>hero-phone.jpg</span>
+        <span class="info">4:3</span>
+      </figcaption>
+      <img src="assets/hero-phone.jpg" alt="Close-up smartphone surface for Jinjie Mobile">
+    </figure>
+  </div>
+</header>
+
+<section class="section wrap" id="focus">
+  <div class="sec-head">
+    <h2 class="sec-title">where it's <span class="mute">made.</span></h2>
+  </div>
+  <div class="bento">
+    <figure class="frame">
+      <figcaption class="frame-bar">
+        <span class="path"><span class="ic">▸</span><span class="dir">~/assets/</span>focus-workspace.jpg</span>
+        <span class="info">16:11</span>
+      </figcaption>
+      <img src="assets/focus-workspace.jpg" alt="Mobile design workspace">
+    </figure>
+    <figure class="frame tall">
+      <figcaption class="frame-bar">
+        <span class="path"><span class="ic">▸</span><span class="dir">~/assets/</span>feature-closeup.jpg</span>
+        <span class="info">3:4</span>
+      </figcaption>
+      <img src="assets/feature-closeup.jpg" alt="Close-up mobile glass surface">
+    </figure>
+  </div>
+  <p class="sec-note">// small screens first. every idea starts with a narrow job and a reason to exist. prototypes land on real devices, not slide decks.</p>
+</section>
+
+<section class="section wrap" id="log">
+  <div class="sec-head">
+    <h2 class="sec-title">what's <span class="mute">cooking.</span></h2>
+  </div>
+
+  <div class="log-wrap">
+    <div class="log">
+      <div class="log-row">
+        <span class="log-tag now">NOW<span class="pulse"></span></span>
+        <p class="log-body">Researching small, focused mobile tools.<span class="comment">// narrowing down the first problem worth solving.</span></p>
+      </div>
+      <div class="log-row">
+        <span class="log-tag next">NEXT</span>
+        <p class="log-body">Building first release candidates.<span class="comment">// prototypes on real devices, no mockups.</span></p>
+      </div>
+      <div class="log-row">
+        <span class="log-tag later">LATER</span>
+        <p class="log-body">Publishing support and privacy pages.<span class="comment">// this page becomes the home for released apps.</span></p>
+      </div>
+    </div>
+
+    <figure class="frame desk-frame">
+      <figcaption class="frame-bar">
+        <span class="path"><span class="ic">▸</span><span class="dir">~/assets/</span>coming-soon-desk.jpg</span>
+        <span class="info">16:8</span>
+      </figcaption>
+      <img src="assets/coming-soon-desk.jpg" alt="Pre-release mobile product planning desk">
+    </figure>
+  </div>
+</section>
+
+<footer class="foot wrap" id="contact">
+  <div>© 2026 jinjie.mobile · focused apps in progress</div>
+  <div>
+    <a href="https://github.com/Jinjiemobile" target="_blank" rel="noreferrer">github</a> &nbsp;//&nbsp;
+    <a href="mailto:hello@jinjiemobile.com">hello@jinjiemobile.com</a>
+  </div>
+</footer>
+
+  <script src="script.js"></script>
+</body>
 </html>

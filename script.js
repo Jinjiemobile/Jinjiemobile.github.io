@@ -2,7 +2,21 @@
   const GLYPHS = "!<>-_\\/[]{}=+*?#01ABCDEFxyz";
   document.querySelectorAll("[data-scramble]").forEach((el) => {
     const target = el.dataset.text;
-    if (reduce) { el.textContent = target; return; }
+    const isDual = el.classList.contains("scramble-dual");
+    const parts = isDual && el.dataset.split ? el.dataset.split.split("|") : null;
+
+    const finalize = () => {
+      if (isDual && parts) {
+        // 方案 a:解码完成后着色分块 —— 整体解码,完成后按空格拆成两个色块 span
+        el.innerHTML =
+          '<span class="blk blk-g">' + parts[0] + "</span> " +
+          '<span class="blk blk-o">' + parts[1] + "</span>";
+      } else {
+        el.textContent = target;
+      }
+    };
+
+    if (reduce) { finalize(); return; }
     let frame = 0;
     const lockEvery = 5;
     const totalFrames = target.length * lockEvery + 8;
@@ -12,9 +26,15 @@
         if (target[i] === " ") { out += " "; continue; }
         out += i < frame / lockEvery ? target[i] : GLYPHS[(Math.random() * GLYPHS.length) | 0];
       }
+      // 解码过程中乱码字符用橙色(通过 class 控制),完成后着色分块
       el.textContent = out;
+      el.classList.add("scrambling");
       frame++;
-      if (frame >= totalFrames) { el.textContent = target; return; }
+      if (frame >= totalFrames) {
+        el.classList.remove("scrambling");
+        finalize();
+        return;
+      }
       setTimeout(run, 38);
     };
     setTimeout(run, 250);
@@ -26,21 +46,14 @@
   const root = document.documentElement;
   const btn = document.getElementById("toggle");
 
-  // Follow OS color scheme live unless the user manually toggles.
-  let userOverrode = false;
-  const darkMq = window.matchMedia("(prefers-color-scheme: dark)");
+  // Dark is the default brand theme. Users can still toggle to light.
   const applyTheme = (mode) => {
     root.dataset.theme = mode;
     if (btn) btn.textContent = `[ ${mode} ]`;
   };
-  applyTheme(darkMq.matches ? "dark" : "light");
-  darkMq.addEventListener("change", (e) => {
-    if (userOverrode) return;
-    applyTheme(e.matches ? "dark" : "light");
-  });
+  applyTheme("dark");
 
   btn.addEventListener("click", () => {
-    userOverrode = true;
     const next = root.dataset.theme === "dark" ? "light" : "dark";
     applyTheme(next);
   });
